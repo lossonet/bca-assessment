@@ -1,0 +1,20 @@
+CREATE TABLE `clients` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `salutation` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `first_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `last_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `country` char(3) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `zipcode` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `newsletter` tinyint(1) DEFAULT '0',
+  `asset_class` enum('large','mid','small') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'large',
+  `investment_time` enum('short','medium','long') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'short',
+  `expected_date` date NOT NULL,
+  `comments` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`),
+  KEY `country` (`country`),
+  KEY `newsletter` (`newsletter`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
